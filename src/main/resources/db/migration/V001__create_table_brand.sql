@@ -1,0 +1,4 @@
+CREATE TABLE BRAND (
+    brand_id INT PRIMARY KEY AUTO_INCREMENT,
+    brand_name VARCHAR(255)
+);
