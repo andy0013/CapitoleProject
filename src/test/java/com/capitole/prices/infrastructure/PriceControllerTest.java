@@ -15,6 +15,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.time.LocalDateTime;
+
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -32,22 +34,33 @@ public class PriceControllerTest {
 
     @Test
     public void testFindByCriteriaShouldSucceedOk() throws Exception {
-        PriceByCriteriaRequest request = new PriceByCriteriaRequest();
+        LocalDateTime applicationDate = LocalDateTime.now();
+        Long brandIdentifier = 1L;
+        Long productIdentifier = 2L;
+
         PriceByCriteriaResponse expectedResponse = new PriceByCriteriaResponse();
         when(priceService.findByCriteria(any(PriceByCriteriaRequest.class))).thenReturn(expectedResponse);
         mockMvc.perform(get("/prices/findByCriteria")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(new ObjectMapper().writeValueAsString(request)))
+                .param("applicationDate", applicationDate.toString())
+                .param("brandIdentifier", brandIdentifier.toString())
+                .param("productIdentifier", productIdentifier.toString())
+                .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
 
     @Test
     public void testFindByCriteriaShouldFailNotFound() throws Exception {
+        LocalDateTime applicationDate = LocalDateTime.now();
+        Long brandIdentifier = 1L;
+        Long productIdentifier = 2L;
+
         PriceByCriteriaRequest request = new PriceByCriteriaRequest();
         when(priceService.findByCriteria(any(PriceByCriteriaRequest.class))).thenThrow(PriceNotFoundException.class);
         mockMvc.perform(get("/prices/findByCriteria")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(new ObjectMapper().writeValueAsString(request)))
+                .param("applicationDate", applicationDate.toString())
+                .param("brandIdentifier", brandIdentifier.toString())
+                .param("productIdentifier", productIdentifier.toString())
+                .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound());
     }
 
