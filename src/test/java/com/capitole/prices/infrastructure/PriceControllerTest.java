@@ -5,7 +5,6 @@ import com.capitole.prices.application.PriceByCriteriaResponse;
 import com.capitole.prices.domain.PriceService;
 import com.capitole.prices.infrastructure.adapters.controllers.PriceController;
 import com.capitole.prices.infrastructure.exceptions.PriceNotFoundException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +21,11 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+/**
+ * Test de Integracion.
+ * Interaccion PriceController con PriceServiceImpl.
+ *
+ */
 @RunWith(SpringRunner.class)
 @WebMvcTest(PriceController.class)
 public class PriceControllerTest {
@@ -63,5 +67,20 @@ public class PriceControllerTest {
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound());
     }
+
+    @Test
+    public void testFindByCriteriaShouldFailInvalidRequestParam() throws Exception {
+        LocalDateTime applicationDate = LocalDateTime.now();
+        Long productIdentifier = 2L;
+
+        PriceByCriteriaRequest request = new PriceByCriteriaRequest();
+        when(priceService.findByCriteria(any(PriceByCriteriaRequest.class))).thenThrow(PriceNotFoundException.class);
+        mockMvc.perform(get("/prices/findByCriteria")
+                        .param("applicationDate", applicationDate.toString())
+                        .param("productIdentifier", productIdentifier.toString())
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
+    }
+
 
 }

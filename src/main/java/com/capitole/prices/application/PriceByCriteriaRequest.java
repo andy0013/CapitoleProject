@@ -5,10 +5,17 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class PriceByCriteriaRequest {
-	private String prop;
+
+	private LocalDateTime applicationDate;
+
+	private Long brandIdentifier;
+
+	private Long productIdentifier;
 }

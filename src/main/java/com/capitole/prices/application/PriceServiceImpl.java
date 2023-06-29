@@ -1,5 +1,6 @@
 package com.capitole.prices.application;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.capitole.prices.infrastructure.adapters.repositories.PriceRepository;
@@ -17,12 +18,17 @@ public class PriceServiceImpl implements PriceService {
 		this.priceRepository = priceRepository;
 	}
 
+
 	@Override
 	public PriceByCriteriaResponse findByCriteria(PriceByCriteriaRequest priceByCriteriaRequest) {
-		Optional<Price> optionalPrice = this.priceRepository.findTopByBrandIdAndProductIdAndDateOrderByPriorityDesc(
+		List<Price> optionalPrice = this.priceRepository.findTopByBrandIdAndProductIdAndDateOrderByPriorityDesc(
 				priceByCriteriaRequest.getBrandIdentifier(),
 				priceByCriteriaRequest.getProductIdentifier(),
 				priceByCriteriaRequest.getApplicationDate());
-		return optionalPrice.map(PriceByCriteriaResponse::fromDomain).orElseThrow(() ->new PriceNotFoundException());
+
+		return optionalPrice.stream()
+				.findFirst()
+				.map(PriceByCriteriaResponse::fromDomain)
+				.orElseThrow(() ->new PriceNotFoundException());
 	}
 }
