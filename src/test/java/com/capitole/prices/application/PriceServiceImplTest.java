@@ -1,8 +1,11 @@
 package com.capitole.prices.application;
 
 import com.capitole.priceList.domain.PriceList;
+import com.capitole.prices.application.dto.PriceByCriteriaRequest;
+import com.capitole.prices.application.dto.PriceByCriteriaResponse;
+import com.capitole.prices.application.service.PriceServiceImpl;
 import com.capitole.prices.domain.Price;
-import com.capitole.prices.infrastructure.adapters.repositories.PriceRepository;
+import com.capitole.prices.infrastructure.adapters.repositories.H2PriceRepository;
 import com.capitole.prices.infrastructure.exceptions.PriceNotFoundException;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,13 +25,13 @@ import static org.mockito.Mockito.when;
 public class PriceServiceImplTest {
 
     @Mock
-    private PriceRepository priceRepository;
+    private H2PriceRepository priceRepository;
 
     private PriceServiceImpl priceService;
 
     @Before
     public void setup() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
         priceService = new PriceServiceImpl(priceRepository);
     }
 
@@ -54,7 +57,7 @@ public class PriceServiceImplTest {
                 .price(BigDecimal.valueOf(50.00))
                 .build());
 
-        when(priceRepository.findTopByBrandIdAndProductIdAndDateOrderByPriorityDesc(
+        when(priceRepository.findByBrandIdAndProductIdAndDateOrderByPriorityDesc(
                 any(), any(), any()))
                 .thenReturn(prices);
 
@@ -70,7 +73,7 @@ public class PriceServiceImplTest {
     @Test(expected = PriceNotFoundException.class)
     public void testFindByCriteriaThrowsPriceNotFoundWhenEmptyException() {
 
-        when(priceRepository.findTopByBrandIdAndProductIdAndDateOrderByPriorityDesc(
+        when(priceRepository.findByBrandIdAndProductIdAndDateOrderByPriorityDesc(
                 any(), any(), any()))
                 .thenReturn(new ArrayList<>());
 
