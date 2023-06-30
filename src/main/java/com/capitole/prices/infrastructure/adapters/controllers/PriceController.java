@@ -1,17 +1,20 @@
 package com.capitole.prices.infrastructure.adapters.controllers;
 
-import com.capitole.prices.application.dto.PriceByCriteriaRequest;
-import com.capitole.prices.application.dto.PriceByCriteriaResponse;
-import com.capitole.prices.infrastructure.adapters.controllers.output.Header;
-import com.capitole.prices.infrastructure.adapters.controllers.output.ResponseFindByCriteriaPrice;
+import java.time.LocalDateTime;
+
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
+import com.capitole.prices.application.dto.PriceByCriteriaRequest;
+import com.capitole.prices.application.dto.PriceByCriteriaResponse;
 import com.capitole.prices.domain.services.PriceService;
-
-import java.time.LocalDateTime;
+import com.capitole.prices.infrastructure.adapters.controllers.output.Header;
+import com.capitole.prices.infrastructure.adapters.controllers.output.ResponseFindByCriteriaPrice;
 
 @RestController
 @RequestMapping("/prices")
