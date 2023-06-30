@@ -1,7 +1,7 @@
 package com.capitole.prices.infrastructure.exceptions;
 
 import com.capitole.prices.infrastructure.adapters.controllers.output.Header;
-import com.capitole.prices.infrastructure.adapters.ResponseFindByCriteriaPrice;
+import com.capitole.prices.infrastructure.adapters.controllers.output.ResponseFindByCriteriaPrice;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
