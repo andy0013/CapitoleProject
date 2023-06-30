@@ -1,5 +1,20 @@
 package com.capitole.prices.application;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
 import com.capitole.priceList.domain.PriceList;
 import com.capitole.prices.application.dto.PriceByCriteriaRequest;
 import com.capitole.prices.application.dto.PriceByCriteriaResponse;
@@ -7,20 +22,6 @@ import com.capitole.prices.application.service.PriceServiceImpl;
 import com.capitole.prices.domain.Price;
 import com.capitole.prices.infrastructure.adapters.repositories.H2PriceRepository;
 import com.capitole.prices.infrastructure.exceptions.PriceNotFoundException;
-import org.junit.Before;
-import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
 
 public class PriceServiceImplTest {
 

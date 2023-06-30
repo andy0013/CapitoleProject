@@ -1,10 +1,12 @@
 package com.capitole.prices.infrastructure;
 
-import com.capitole.prices.application.dto.PriceByCriteriaRequest;
-import com.capitole.prices.application.dto.PriceByCriteriaResponse;
-import com.capitole.prices.domain.services.PriceService;
-import com.capitole.prices.infrastructure.adapters.controllers.PriceController;
-import com.capitole.prices.infrastructure.exceptions.PriceNotFoundException;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.time.LocalDateTime;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +16,11 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.time.LocalDateTime;
-
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import com.capitole.prices.application.dto.PriceByCriteriaRequest;
+import com.capitole.prices.application.dto.PriceByCriteriaResponse;
+import com.capitole.prices.domain.services.PriceService;
+import com.capitole.prices.infrastructure.adapters.controllers.PriceController;
+import com.capitole.prices.infrastructure.exceptions.PriceNotFoundException;
 
 /**
  * Test de Integracion.

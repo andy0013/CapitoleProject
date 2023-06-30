@@ -2,12 +2,13 @@ package com.capitole.prices.application.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.capitole.prices.application.dto.PriceByCriteriaRequest;
 import com.capitole.prices.application.dto.PriceByCriteriaResponse;
-import com.capitole.prices.infrastructure.adapters.repositories.H2PriceRepository;
-import org.springframework.stereotype.Service;
 import com.capitole.prices.domain.Price;
 import com.capitole.prices.domain.services.PriceService;
+import com.capitole.prices.infrastructure.adapters.repositories.H2PriceRepository;
 import com.capitole.prices.infrastructure.exceptions.PriceNotFoundException;
 
 @Service
