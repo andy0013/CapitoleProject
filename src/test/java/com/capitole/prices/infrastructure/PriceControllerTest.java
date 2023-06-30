@@ -1,8 +1,8 @@
 package com.capitole.prices.infrastructure;
 
-import com.capitole.prices.application.PriceByCriteriaRequest;
-import com.capitole.prices.application.PriceByCriteriaResponse;
-import com.capitole.prices.domain.PriceService;
+import com.capitole.prices.application.dto.PriceByCriteriaRequest;
+import com.capitole.prices.application.dto.PriceByCriteriaResponse;
+import com.capitole.prices.domain.services.PriceService;
 import com.capitole.prices.infrastructure.adapters.controllers.PriceController;
 import com.capitole.prices.infrastructure.exceptions.PriceNotFoundException;
 import org.junit.Test;
