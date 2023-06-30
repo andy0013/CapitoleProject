@@ -1,4 +1,4 @@
-package com.capitole.prices.infrastructure.adapters;
+package com.capitole.prices.infrastructure.adapters.controllers.output;
 
 import com.capitole.prices.application.dto.PriceByCriteriaResponse;
 import com.capitole.prices.infrastructure.adapters.controllers.output.Response;

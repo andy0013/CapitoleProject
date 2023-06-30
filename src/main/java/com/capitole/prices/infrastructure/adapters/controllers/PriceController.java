@@ -3,7 +3,7 @@ package com.capitole.prices.infrastructure.adapters.controllers;
 import com.capitole.prices.application.dto.PriceByCriteriaRequest;
 import com.capitole.prices.application.dto.PriceByCriteriaResponse;
 import com.capitole.prices.infrastructure.adapters.controllers.output.Header;
-import com.capitole.prices.infrastructure.adapters.ResponseFindByCriteriaPrice;
+import com.capitole.prices.infrastructure.adapters.controllers.output.ResponseFindByCriteriaPrice;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
