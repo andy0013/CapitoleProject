@@ -1,7 +1,7 @@
 -- Inserta modelo de datos de ejemplo solicitado para el ejercicio.
 
-INSERT INTO PRICE_LIST (price_list_id, price_list_name)
-VALUES (1, 'Price List 1'),
-       (2, 'Price List 2'),
-       (3, 'Price List 3'),
-       (4, 'Price List 4');
+INSERT INTO PRICE_LIST (price_list_id, price_list_applicable_rate)
+VALUES (1, 30.50),
+       (2, 35.50),
+       (3, 40.50),
+       (4, 55.50);
