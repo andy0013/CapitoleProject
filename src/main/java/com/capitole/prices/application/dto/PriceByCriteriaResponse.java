@@ -1,11 +1,10 @@
-package com.capitole.prices.application;
+package com.capitole.prices.application.dto;
 
 import com.capitole.prices.domain.Price;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
